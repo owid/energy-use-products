@@ -730,8 +730,8 @@
             const downloadCanvas = document.createElement('canvas');
             const ctx = downloadCanvas.getContext('2d');
 
-            // Use 3x scale for high DPI displays
-            const scale = 3;
+            // Use 2x scale for high DPI displays
+            const scale = 2;
             const baseWidth = 1200;
             const baseChartHeight = 600 + (chart.data.labels.length * 40);
             const baseHeight = baseChartHeight + 200; // Extra space for title, subtitle, and source
@@ -740,32 +740,39 @@
             downloadCanvas.width = baseWidth * scale;
             downloadCanvas.height = baseHeight * scale;
 
-            // Scale the context to maintain proportions
-            ctx.scale(scale, scale);
-
             // Fill white background
             ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, baseWidth, baseHeight);
+            ctx.fillRect(0, 0, downloadCanvas.width, downloadCanvas.height);
 
-            // Draw title
+            // Draw title (scaled coordinates and font)
             ctx.fillStyle = '#2E5F8A';
-            ctx.font = 'bold 32px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-            ctx.fillText('Electricity consumption', 40, 50);
+            ctx.font = `bold ${32 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+            ctx.fillText('Electricity consumption', 40 * scale, 50 * scale);
 
-            // Draw subtitle
+            // Draw subtitle (scaled coordinates and font)
             ctx.fillStyle = '#6b7280';
-            ctx.font = '18px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-            ctx.fillText('Estimates measured in watt-hours (Wh).', 40, 85);
+            ctx.font = `${18 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+            ctx.fillText('Estimates measured in watt-hours (Wh).', 40 * scale, 85 * scale);
 
-            // Draw the chart
+            // Create a temporary high-res canvas for the chart
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
             const chartCanvas = document.getElementById('energyChart');
-            ctx.drawImage(chartCanvas, 40, 110, baseWidth - 80, baseChartHeight - 120);
 
-            // Draw source at the bottom
+            tempCanvas.width = (baseWidth - 80) * scale;
+            tempCanvas.height = (baseChartHeight - 120) * scale;
+
+            // Draw the chart at high resolution
+            tempCtx.drawImage(chartCanvas, 0, 0, tempCanvas.width, tempCanvas.height);
+
+            // Draw the high-res chart onto the download canvas
+            ctx.drawImage(tempCanvas, 40 * scale, 110 * scale);
+
+            // Draw source at the bottom (scaled coordinates and font)
             ctx.fillStyle = '#6b7280';
-            ctx.font = '14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            ctx.font = `${14 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
             const sourceText = `Source: ${window.location.href}`;
-            ctx.fillText(sourceText, 40, baseHeight - 30);
+            ctx.fillText(sourceText, 40 * scale, (baseHeight - 30) * scale);
 
             // Download the canvas as PNG
             downloadCanvas.toBlob((blob) => {
