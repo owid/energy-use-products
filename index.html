@@ -159,12 +159,12 @@
         .chart-panel h2 {
             color: #2E5F8A;
             margin-bottom: 5px;
-            font-size: 1.3em;
+            font-size: 1.5em;
         }
 
         .chart-subtitle {
             color: #6b7280;
-            font-size: 0.9em;
+            font-size: 1em;
             margin-bottom: 15px;
         }
 
@@ -641,6 +641,10 @@
                                     size: 14,
                                     weight: 'bold'
                                 }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)',
+                                lineWidth: 1
                             }
                         },
                         y: {
@@ -649,6 +653,10 @@
                                 font: {
                                     size: 12
                                 }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)',
+                                lineWidth: 1
                             }
                         }
                     }
@@ -734,7 +742,7 @@
             const scale = 2;
             const baseWidth = 1200;
             const baseChartHeight = 600 + (chart.data.labels.length * 40);
-            const baseHeight = baseChartHeight + 200; // Extra space for title, subtitle, and source
+            const baseHeight = baseChartHeight + 180; // Extra space for title, subtitle, and source
 
             // Set canvas dimensions at high resolution
             downloadCanvas.width = baseWidth * scale;
@@ -746,13 +754,13 @@
 
             // Draw title (scaled coordinates and font)
             ctx.fillStyle = '#2E5F8A';
-            ctx.font = `bold ${32 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
-            ctx.fillText('Electricity consumption', 40 * scale, 50 * scale);
+            ctx.font = `bold ${40 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+            ctx.fillText('Electricity consumption', 40 * scale, 55 * scale);
 
             // Draw subtitle (scaled coordinates and font)
             ctx.fillStyle = '#6b7280';
-            ctx.font = `${18 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
-            ctx.fillText('Estimates measured in watt-hours (Wh).', 40 * scale, 85 * scale);
+            ctx.font = `${22 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+            ctx.fillText('Estimates measured in watt-hours (Wh).', 40 * scale, 90 * scale);
 
             // Create a temporary high-res canvas for the chart
             const tempCanvas = document.createElement('canvas');
@@ -768,11 +776,11 @@
             // Draw the high-res chart onto the download canvas
             ctx.drawImage(tempCanvas, 40 * scale, 110 * scale);
 
-            // Draw source at the bottom (scaled coordinates and font)
+            // Draw source at the bottom (scaled coordinates and font) - reduced gap
             ctx.fillStyle = '#6b7280';
             ctx.font = `${14 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
             const sourceText = `Source: ${window.location.href}`;
-            ctx.fillText(sourceText, 40 * scale, (baseHeight - 30) * scale);
+            ctx.fillText(sourceText, 40 * scale, (baseHeight - 20) * scale);
 
             // Download the canvas as PNG
             downloadCanvas.toBlob((blob) => {
