@@ -165,10 +165,21 @@
         .chart-subtitle {
             color: #6b7280;
             font-size: 0.9em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 500px;
+            background: #f9fafb;
+            border-radius: 10px;
+            padding: 15px;
         }
 
         .download-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
             background: #4A90E2;
             color: white;
             border: none;
@@ -177,8 +188,8 @@
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 10px;
             transition: background 0.3s ease;
+            z-index: 10;
         }
 
         .download-btn:hover {
@@ -188,14 +199,6 @@
         .download-btn:disabled {
             background: #9ca3af;
             cursor: not-allowed;
-        }
-
-        .chart-container {
-            position: relative;
-            height: 500px;
-            background: #f9fafb;
-            border-radius: 10px;
-            padding: 15px;
         }
 
         .no-data {
@@ -300,10 +303,10 @@
             <div class="chart-panel">
                 <h2>Electricity consumption</h2>
                 <p class="chart-subtitle">Estimates measured in watt-hours (Wh).</p>
-                <button class="download-btn" id="downloadBtn" onclick="downloadChart()" disabled>Download Chart</button>
                 <div class="chart-container">
                     <canvas id="energyChart"></canvas>
                     <div class="no-data" id="noData">Select products to compare their electricity use</div>
+                    <button class="download-btn" id="downloadBtn" onclick="downloadChart()" disabled>Download Chart</button>
                 </div>
             </div>
         </div>
