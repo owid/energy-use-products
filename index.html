@@ -726,18 +726,26 @@
         function downloadChart() {
             if (!chart) return;
 
-            // Create a new canvas for the download
+            // Create a new canvas for the download with high resolution
             const downloadCanvas = document.createElement('canvas');
             const ctx = downloadCanvas.getContext('2d');
 
-            // Set canvas dimensions
-            downloadCanvas.width = 1200;
-            const chartHeight = 600 + (chart.data.labels.length * 40);
-            downloadCanvas.height = chartHeight + 200; // Extra space for title, subtitle, and source
+            // Use 3x scale for high DPI displays
+            const scale = 3;
+            const baseWidth = 1200;
+            const baseChartHeight = 600 + (chart.data.labels.length * 40);
+            const baseHeight = baseChartHeight + 200; // Extra space for title, subtitle, and source
+
+            // Set canvas dimensions at high resolution
+            downloadCanvas.width = baseWidth * scale;
+            downloadCanvas.height = baseHeight * scale;
+
+            // Scale the context to maintain proportions
+            ctx.scale(scale, scale);
 
             // Fill white background
             ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, downloadCanvas.width, downloadCanvas.height);
+            ctx.fillRect(0, 0, baseWidth, baseHeight);
 
             // Draw title
             ctx.fillStyle = '#2E5F8A';
@@ -751,13 +759,13 @@
 
             // Draw the chart
             const chartCanvas = document.getElementById('energyChart');
-            ctx.drawImage(chartCanvas, 40, 110, downloadCanvas.width - 80, chartHeight - 120);
+            ctx.drawImage(chartCanvas, 40, 110, baseWidth - 80, baseChartHeight - 120);
 
             // Draw source at the bottom
             ctx.fillStyle = '#6b7280';
             ctx.font = '14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
             const sourceText = `Source: ${window.location.href}`;
-            ctx.fillText(sourceText, 40, downloadCanvas.height - 30);
+            ctx.fillText(sourceText, 40, baseHeight - 30);
 
             // Download the canvas as PNG
             downloadCanvas.toBlob((blob) => {
