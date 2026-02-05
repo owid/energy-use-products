@@ -101,6 +101,7 @@
             font-weight: 600;
             color: #1f2937;
             flex: 1;
+            font-size: 14px;
         }
 
         .custom-inputs {
@@ -164,7 +165,29 @@
         .chart-subtitle {
             color: #6b7280;
             font-size: 0.9em;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+        }
+
+        .download-btn {
+            background: #4A90E2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #2E5F8A;
+        }
+
+        .download-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
         }
 
         .chart-container {
@@ -277,6 +300,7 @@
             <div class="chart-panel">
                 <h2>Electricity consumption</h2>
                 <p class="chart-subtitle">Estimates measured in watt-hours (Wh).</p>
+                <button class="download-btn" id="downloadBtn" onclick="downloadChart()" disabled>Download Chart</button>
                 <div class="chart-container">
                     <canvas id="energyChart"></canvas>
                     <div class="no-data" id="noData">Select products to compare their electricity use</div>
@@ -548,8 +572,11 @@
             const descriptions = selectedData.map(d => d.description);
 
             const noDataDiv = document.getElementById('noData');
+            const downloadBtn = document.getElementById('downloadBtn');
+
             if (selectedProducts.length === 0) {
                 noDataDiv.style.display = 'flex';
+                downloadBtn.disabled = true;
                 if (chart) {
                     chart.destroy();
                     chart = null;
@@ -558,6 +585,7 @@
             }
 
             noDataDiv.style.display = 'none';
+            downloadBtn.disabled = false;
 
             const ctx = document.getElementById('energyChart').getContext('2d');
 
@@ -690,6 +718,53 @@
                 }
             });
             updateChart();
+        }
+
+        function downloadChart() {
+            if (!chart) return;
+
+            // Create a new canvas for the download
+            const downloadCanvas = document.createElement('canvas');
+            const ctx = downloadCanvas.getContext('2d');
+
+            // Set canvas dimensions
+            downloadCanvas.width = 1200;
+            const chartHeight = 600 + (chart.data.labels.length * 40);
+            downloadCanvas.height = chartHeight + 200; // Extra space for title, subtitle, and source
+
+            // Fill white background
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, downloadCanvas.width, downloadCanvas.height);
+
+            // Draw title
+            ctx.fillStyle = '#2E5F8A';
+            ctx.font = 'bold 32px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            ctx.fillText('Electricity consumption', 40, 50);
+
+            // Draw subtitle
+            ctx.fillStyle = '#6b7280';
+            ctx.font = '18px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            ctx.fillText('Estimates measured in watt-hours (Wh).', 40, 85);
+
+            // Draw the chart
+            const chartCanvas = document.getElementById('energyChart');
+            ctx.drawImage(chartCanvas, 40, 110, downloadCanvas.width - 80, chartHeight - 120);
+
+            // Draw source at the bottom
+            ctx.fillStyle = '#6b7280';
+            ctx.font = '14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            const sourceText = `Source: ${window.location.href}`;
+            ctx.fillText(sourceText, 40, downloadCanvas.height - 30);
+
+            // Download the canvas as PNG
+            downloadCanvas.toBlob((blob) => {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.download = 'electricity-consumption-chart.png';
+                link.href = url;
+                link.click();
+                URL.revokeObjectURL(url);
+            });
         }
 
         loadProducts();
