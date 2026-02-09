@@ -77,11 +77,25 @@
     "default_value": 1.0
   },
   {
+    "name": "Streaming YouTube",
+    "wattage": 20.0,
+    "fixed_wh": 20.0,
+    "input_type": "hours",
+    "default_value": 1.0
+  },
+  {
     "name": "ChatGPT median query",
     "wattage": 0.3,
     "fixed_wh": 0.3,
     "input_type": "queries",
     "default_value": 1
+  },
+  {
+    "name": "Reading on a Kindle",
+    "wattage": 0.2,
+    "fixed_wh": 0.2,
+    "input_type": "hours",
+    "default_value": 1.0
   },
   {
     "name": "Kitchen appliances",
