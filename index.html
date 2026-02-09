@@ -264,6 +264,64 @@
             margin-top: 0;
         }
 
+        .info-section {
+            padding: 0 20px 20px 20px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid #e5e7eb;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            bottom: -2px;
+        }
+
+        .tab-button:hover {
+            color: #4A90E2;
+        }
+
+        .tab-button.active {
+            color: #2E5F8A;
+            border-bottom-color: #4A90E2;
+        }
+
+        .tab-content {
+            display: none;
+            background: #f9fafb;
+            border-radius: 10px;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h1,
+        .tab-content h2,
+        .tab-content h3 {
+            color: #2E5F8A;
+            margin-bottom: 12px;
+        }
+
+        .tab-content p {
+            margin-bottom: 12px;
+            color: #1f2937;
+        }
+
         @media (max-width: 1024px) {
             .content {
                 grid-template-columns: 1fr;
@@ -308,6 +366,25 @@
                     <div class="no-data" id="noData">Select products to compare their electricity use</div>
                     <button class="download-btn" id="downloadBtn" onclick="downloadChart()" disabled>Download Chart</button>
                 </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('description')">Description</button>
+                <button class="tab-button" onclick="switchTab('methodology')">Methodology</button>
+            </div>
+
+            <div id="description" class="tab-content active">
+                <p>Rgwerh ryrtbyrtvt</p>
+                <p>T</p>
+                <p><strong>Description</strong></p>
+            </div>
+
+            <div id="methodology" class="tab-content">
+                <p><strong>Methodology</strong></p>
+                <p>Rhreybrtytyv</p>
+                <p>cthrth</p>
             </div>
         </div>
     </div>
@@ -793,6 +870,26 @@
                 link.click();
                 URL.revokeObjectURL(url);
             });
+        }
+
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active state from all buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active state to clicked button
+            event.target.classList.add('active');
         }
 
         loadProducts();
