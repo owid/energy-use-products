@@ -988,7 +988,8 @@
                                 autoSkip: false,
                                 font: {
                                     size: 12
-                                }
+                                },
+                                align: 'end'
                             },
                             grid: {
                                 display: false
@@ -1035,16 +1036,16 @@
 
         function getColor(index) {
             const colors = [
-                'rgba(102, 126, 234, 1)',
-                'rgba(118, 75, 162, 1)',
-                'rgba(237, 100, 166, 1)',
-                'rgba(255, 154, 158, 1)',
-                'rgba(250, 208, 196, 1)',
-                'rgba(52, 211, 153, 1)',
-                'rgba(251, 191, 36, 1)',
-                'rgba(248, 113, 113, 1)',
-                'rgba(96, 165, 250, 1)',
-                'rgba(167, 139, 250, 1)'
+                'rgba(31, 119, 180, 1)',   // Professional blue
+                'rgba(44, 160, 101, 1)',   // Forest green
+                'rgba(214, 127, 34, 1)',   // Orange
+                'rgba(23, 99, 140, 1)',    // Dark blue
+                'rgba(100, 143, 69, 1)',   // Olive green
+                'rgba(188, 97, 43, 1)',    // Burnt orange
+                'rgba(62, 142, 165, 1)',   // Teal
+                'rgba(140, 86, 75, 1)',    // Brown
+                'rgba(93, 130, 165, 1)',   // Steel blue
+                'rgba(82, 121, 75, 1)'     // Sage green
             ];
             return colors[index % colors.length];
         }
