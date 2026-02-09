@@ -311,15 +311,52 @@
         }
 
         .tab-content h1,
-        .tab-content h2,
-        .tab-content h3 {
+        .tab-content h2 {
             color: #2E5F8A;
             margin-bottom: 12px;
+            margin-top: 20px;
+        }
+
+        .tab-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .tab-content h3 {
+            color: #2E5F8A;
+            margin-bottom: 10px;
+            margin-top: 18px;
+            font-size: 16px;
+        }
+
+        .tab-content h4 {
+            color: #4A90E2;
+            margin-bottom: 8px;
+            margin-top: 14px;
+            font-size: 14px;
         }
 
         .tab-content p {
             margin-bottom: 12px;
             color: #1f2937;
+        }
+
+        .tab-content ul {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .tab-content li {
+            margin-bottom: 6px;
+            color: #1f2937;
+        }
+
+        .tab-content a {
+            color: #4A90E2;
+            text-decoration: none;
+        }
+
+        .tab-content a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 1024px) {
@@ -381,9 +418,51 @@
             </div>
 
             <div id="methodology" class="tab-content">
-                <p><strong>Methodology</strong></p>
-                <p>Rhreybrtytyv</p>
-                <p>cthrth</p>
+                <h2>Methodology and Sources</h2>
+
+                <h3>General Methodology</h3>
+                <p>All energy consumption values are measured in <strong>watt-hours (Wh)</strong>, which represents the amount of energy consumed over time. The basic formula is:</p>
+                <p><strong>Energy (Wh) = Power (Watts) × Time (Hours)</strong></p>
+                <p>For example, a 100-watt light bulb used for 2 hours consumes 200 watt-hours of energy.</p>
+
+                <h3>Data Sources</h3>
+                <p>Values are compiled from:</p>
+                <ul>
+                    <li><a href="https://www.energy.gov/energysaver/estimating-appliance-and-home-electronic-energy-use" target="_blank">U.S. Department of Energy</a> estimates and guidelines</li>
+                    <li><a href="https://www.eia.gov/energyexplained/use-of-energy/electricity-use-in-homes.php" target="_blank">U.S. Energy Information Administration (EIA)</a> residential energy data</li>
+                    <li>Manufacturer specifications and testing data</li>
+                    <li>Peer-reviewed research publications</li>
+                    <li>Industry reports from 2024-2026</li>
+                </ul>
+
+                <h3>Key Category Sources</h3>
+
+                <h4>Lighting</h4>
+                <p>LED bulbs use 75-85% less energy than incandescent bulbs for equivalent light output. Sources: <a href="https://www.energysage.com/electricity/house-watts/how-many-watts-does-a-light-bulb-use/" target="_blank">EnergySage</a>, U.S. DOE.</p>
+
+                <h4>Digital Technologies</h4>
+                <p><strong>Streaming:</strong> HD video streaming consumes approximately 18-20 Wh per hour. Sources: <a href="https://www.carbonbrief.org/factcheck-what-is-the-carbon-footprint-of-streaming-video-on-netflix/" target="_blank">Carbon Brief</a>, <a href="https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines" target="_blank">IEA</a>.</p>
+                <p><strong>AI Queries:</strong> ChatGPT queries consume approximately 0.3-0.4 Wh. Sources: <a href="https://research.aimultiple.com/ai-energy-consumption/" target="_blank">AI Multiple Research</a>, <a href="https://hannahritchie.substack.com/p/carbon-footprint-chatgpt" target="_blank">Hannah Ritchie</a>.</p>
+
+                <h4>Kitchen & Home Appliances</h4>
+                <p>Electric ovens typically use 2,000-5,000 watts. Gas appliances are converted to electrical equivalents for comparison. Sources: <a href="https://www.energysage.com/electricity/house-watts/how-many-watts-does-an-electric-oven-and-stove-use/" target="_blank">EnergySage</a>, <a href="https://energyusecalculator.com/electricity_oven.htm" target="_blank">Energy Use Calculator</a>.</p>
+
+                <h4>Heating & Cooling</h4>
+                <p>Heat pumps are 3-4 times more efficient than resistive heating. Sources: <a href="https://www.aceee.org/sites/default/files/publications/researchreports/a1602.pdf" target="_blank">ACEEE Research</a>, <a href="https://www.hvac.com/expert-advice/heat-pump-vs-gas-furnace/" target="_blank">HVAC.com</a>.</p>
+
+                <h4>Transportation</h4>
+                <p><strong>Electric Vehicles:</strong> Average 300 Wh per mile. Sources: <a href="https://ev-database.org/cheatsheet/energy-consumption-electric-car" target="_blank">EV Database</a>, <a href="https://evhelphub.com/articles/miles-per-kilowatt-hour/" target="_blank">EV Help Hub</a>.</p>
+                <p><strong>E-bikes & E-scooters:</strong> Consume 20-30 Wh per mile. Sources: <a href="https://www.cyclevolta.com/understanding-e-bike-power-range-and-energy/" target="_blank">Cycle Volta</a>, <a href="https://www.levyelectric.com/resources/understanding-electric-scooter-energy-consumption" target="_blank">Levy Electric</a>.</p>
+                <p><strong>Petrol vehicles:</strong> Converted to electrical equivalents (33.7 kWh per gallon of gasoline) for comparison purposes.</p>
+
+                <h3>Important Notes</h3>
+                <p><strong>Variability:</strong> Actual energy consumption varies based on product age, efficiency rating, usage patterns, settings, environmental conditions, and user behavior.</p>
+                <p><strong>Gas Appliances:</strong> Natural gas and petrol energy values are converted to electrical equivalents (watt-hours) for comparison purposes. This allows direct comparison across energy sources.</p>
+                <p><strong>Purpose:</strong> These estimates are designed for educational comparison purposes. For precise measurements of your specific devices, use dedicated energy monitoring equipment.</p>
+
+                <p style="margin-top: 20px;"><strong>Full Methodology Document:</strong> For detailed explanations of each product category, calculation methods, and complete source citations, see the <a href="Methodology_Sources.txt" target="_blank">complete methodology document</a>.</p>
+
+                <p style="margin-top: 10px; font-size: 11px; color: #6b7280;"><em>Last updated: February 2026</em></p>
             </div>
         </div>
     </div>
