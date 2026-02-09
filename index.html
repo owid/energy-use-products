@@ -895,7 +895,6 @@
                     selectedData.push({
                         name: product.name,
                         energy: energy,
-                        color: getColor(index),
                         description: description
                     });
                 }
@@ -907,7 +906,7 @@
             // Extract sorted arrays
             const selectedProducts = selectedData.map(d => d.name);
             const energyValues = selectedData.map(d => d.energy);
-            const colors = selectedData.map(d => d.color);
+            const barColor = 'rgba(214, 39, 40, 1)'; // Red color
             const descriptions = selectedData.map(d => d.description);
 
             const noDataDiv = document.getElementById('noData');
@@ -936,8 +935,8 @@
                     datasets: [{
                         label: 'Energy Use (Wh)',
                         data: energyValues,
-                        backgroundColor: colors,
-                        borderColor: colors,
+                        backgroundColor: barColor,
+                        borderColor: barColor,
                         borderWidth: 2
                     }]
                 },
@@ -1036,16 +1035,16 @@
 
         function getColor(index) {
             const colors = [
-                'rgba(31, 119, 180, 1)',   // Professional blue
-                'rgba(44, 160, 101, 1)',   // Forest green
-                'rgba(214, 127, 34, 1)',   // Orange
-                'rgba(23, 99, 140, 1)',    // Dark blue
-                'rgba(100, 143, 69, 1)',   // Olive green
-                'rgba(188, 97, 43, 1)',    // Burnt orange
-                'rgba(62, 142, 165, 1)',   // Teal
-                'rgba(140, 86, 75, 1)',    // Brown
-                'rgba(93, 130, 165, 1)',   // Steel blue
-                'rgba(82, 121, 75, 1)'     // Sage green
+                'rgba(31, 119, 180, 1)',    // Royal blue
+                'rgba(255, 127, 14, 1)',    // Orange
+                'rgba(44, 160, 44, 1)',     // Green
+                'rgba(214, 39, 40, 1)',     // Red
+                'rgba(148, 103, 189, 1)',   // Purple
+                'rgba(140, 86, 75, 1)',     // Brown
+                'rgba(227, 119, 194, 1)',   // Pink
+                'rgba(127, 127, 127, 1)',   // Gray
+                'rgba(188, 189, 34, 1)',    // Yellow-green
+                'rgba(23, 190, 207, 1)'     // Cyan
             ];
             return colors[index % colors.length];
         }
