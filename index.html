@@ -620,6 +620,14 @@
             }
         }
 
+        function formatWh(value) {
+            if (value < 1) {
+                return value.toFixed(1);
+            } else {
+                return Math.round(value).toLocaleString();
+            }
+        }
+
         function updateChart() {
             const selectedData = [];
 
@@ -703,7 +711,7 @@
                             callbacks: {
                                 label: function(context) {
                                     const desc = descriptions[context.dataIndex];
-                                    return `${Math.round(context.parsed.x).toLocaleString()} Wh (${desc})`;
+                                    return `${formatWh(context.parsed.x)} Wh (${desc})`;
                                 }
                             }
                         }
@@ -760,7 +768,7 @@
                                 ctx.textBaseline = 'middle';
                                 const xPosEnd = bar.x + 10;
                                 const yPos = bar.y;
-                                ctx.fillText(`${Math.round(data).toLocaleString()} Wh`, xPosEnd, yPos);
+                                ctx.fillText(`${formatWh(data)} Wh`, xPosEnd, yPos);
 
                                 // Usage description under the product name (left side)
                                 ctx.fillStyle = '#6b7280';
