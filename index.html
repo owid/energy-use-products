@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Does that use a lot of electricity?</title>
+    <title>Does that use a lot of energy?</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
@@ -344,8 +344,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Does that use a lot of electricity?</h1>
-            <p>Compare electricity consumption of different products and activities</p>
+            <h1>Does that use a lot of energy?</h1>
+            <p>Compare energy consumption of different products and activities</p>
         </div>
 
         <div class="content">
@@ -359,11 +359,11 @@
             </div>
 
             <div class="chart-panel">
-                <h2>Electricity consumption</h2>
+                <h2>Energy consumption</h2>
                 <p class="chart-subtitle">Estimates measured in watt-hours (Wh).</p>
                 <div class="chart-container">
                     <canvas id="energyChart"></canvas>
-                    <div class="no-data" id="noData">Select products to compare their electricity use</div>
+                    <div class="no-data" id="noData">Select products to compare their energy use</div>
                     <button class="download-btn" id="downloadBtn" onclick="downloadChart()" disabled>Download Chart</button>
                 </div>
             </div>
@@ -686,7 +686,7 @@
                 data: {
                     labels: selectedProducts,
                     datasets: [{
-                        label: 'Electricity Use (Wh)',
+                        label: 'Energy Use (Wh)',
                         data: energyValues,
                         backgroundColor: colors,
                         borderColor: colors,
@@ -721,7 +721,7 @@
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: 'Electricity consumption (Watt-hours)',
+                                text: 'Energy consumption (Watt-hours)',
                                 font: {
                                     size: 14,
                                     weight: 'bold'
@@ -842,7 +842,7 @@
             // Draw title (scaled coordinates and font)
             ctx.fillStyle = '#2E5F8A';
             ctx.font = `bold ${40 * scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
-            ctx.fillText('Electricity consumption', 40 * scale, 55 * scale);
+            ctx.fillText('Energy consumption', 40 * scale, 55 * scale);
 
             // Draw subtitle (scaled coordinates and font)
             ctx.fillStyle = '#6b7280';
@@ -873,7 +873,7 @@
             downloadCanvas.toBlob((blob) => {
                 const url = URL.createObjectURL(blob);
                 const link = document.createElement('a');
-                link.download = 'electricity-consumption-chart.png';
+                link.download = 'energy-consumption-chart.png';
                 link.href = url;
                 link.click();
                 URL.revokeObjectURL(url);

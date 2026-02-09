@@ -105,13 +105,6 @@
     "default_value": null
   },
   {
-    "name": "Microwave",
-    "wattage": 1200.0,
-    "fixed_wh": 100.0,
-    "input_type": "hours",
-    "default_value": 0.08333333333333333
-  },
-  {
     "name": "Boiling a kettle",
     "wattage": 2000.0,
     "fixed_wh": 100.0,
@@ -119,11 +112,46 @@
     "default_value": 1
   },
   {
-    "name": "Oven",
+    "name": "Microwave",
+    "wattage": 1200.0,
+    "fixed_wh": 100.0,
+    "input_type": "hours",
+    "default_value": 0.08333333333333333
+  },
+  {
+    "name": "Electric oven",
     "wattage": 2500.0,
     "fixed_wh": 1250.0,
     "input_type": "hours",
     "default_value": 0.5
+  },
+  {
+    "name": "Gas oven",
+    "wattage": 3000.0,
+    "fixed_wh": 1500.0,
+    "input_type": "hours",
+    "default_value": 0.5
+  },
+  {
+    "name": "Air fryer",
+    "wattage": 800.0,
+    "fixed_wh": 200.0,
+    "input_type": "hours",
+    "default_value": 0.25
+  },
+  {
+    "name": "Electric induction hob (one ring)",
+    "wattage": 800.0,
+    "fixed_wh": 200.0,
+    "input_type": "hours",
+    "default_value": 0.25
+  },
+  {
+    "name": "Gas hob (one ring)",
+    "wattage": 1500.0,
+    "fixed_wh": 375.0,
+    "input_type": "hours",
+    "default_value": 0.25
   },
   {
     "name": "Fridge (small)",
@@ -210,44 +238,37 @@
     "default_value": 1.0
   },
   {
-    "name": "Air conditioning (Single Room)",
-    "wattage": 1000.0,
-    "fixed_wh": 1000.0,
-    "input_type": "hours",
-    "default_value": 1.0
-  },
-  {
-    "name": "Air conditioning  (Multiple rooms)",
-    "wattage": 3000.0,
-    "fixed_wh": 3000.0,
-    "input_type": "hours",
-    "default_value": 1.0
-  },
-  {
     "name": "Small desk heater",
-    "wattage": 1000.0,
-    "fixed_wh": 1000.0,
+    "wattage": 400.0,
+    "fixed_wh": 400.0,
     "input_type": "hours",
     "default_value": 1.0
   },
   {
     "name": "Large space heater",
-    "wattage": 3000.0,
-    "fixed_wh": 3000.0,
+    "wattage": 1500.0,
+    "fixed_wh": 1500.0,
     "input_type": "hours",
     "default_value": 1.0
   },
   {
-    "name": "Electric heat pump",
-    "wattage": 4000.0,
-    "fixed_wh": 4000.0,
+    "name": "Electric heat pump (Single room)",
+    "wattage": 500.0,
+    "fixed_wh": 500.0,
     "input_type": "hours",
     "default_value": 1.0
   },
   {
-    "name": "Electric heating",
-    "wattage": null,
-    "fixed_wh": 32876.71232876713,
+    "name": "Gas heating (Single room)",
+    "wattage": 1000.0,
+    "fixed_wh": 1000.0,
+    "input_type": "hours",
+    "default_value": 1.0
+  },
+  {
+    "name": "Air conditioning (Single room)",
+    "wattage": 1000.0,
+    "fixed_wh": 1000.0,
     "input_type": "hours",
     "default_value": 1.0
   },
@@ -259,22 +280,36 @@
     "default_value": null
   },
   {
-    "name": "Driving an e-bike",
-    "wattage": 2.5,
+    "name": "Using an e-bike",
+    "wattage": 25.0,
     "fixed_wh": null,
     "input_type": "miles",
     "default_value": 10
   },
   {
     "name": "Driving an e-scooter",
-    "wattage": 2.6,
+    "wattage": 26.0,
     "fixed_wh": null,
     "input_type": "miles",
     "default_value": 10
   },
   {
-    "name": "Driving  an electric car",
+    "name": "Driving a petrol scooter",
+    "wattage": 400.0,
+    "fixed_wh": null,
+    "input_type": "miles",
+    "default_value": 10
+  },
+  {
+    "name": "Driving an electric car",
     "wattage": 300.0,
+    "fixed_wh": null,
+    "input_type": "miles",
+    "default_value": 10
+  },
+  {
+    "name": "Driving a petrol car",
+    "wattage": 1000.0,
     "fixed_wh": null,
     "input_type": "miles",
     "default_value": 10
